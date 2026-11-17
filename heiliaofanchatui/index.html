@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黑料反差推特大赛-赛事追踪与作品盘点</title>
+<meta name="description" content="黑料反差推特大赛是围绕推特账号反差形象与旧帖翻出的公开整理赛事，汇总2026年11月赛程、参赛条目、评委争议与围观入口，按日期与账号整理可核对的事实线索。">
+<meta name="keywords" content="黑料反差推特大赛">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23151426'/%3E%3Ccircle cx='24' cy='24' r='9' fill='%23ffc86b'/%3E%3Crect x='34' y='14' width='16' height='16' rx='4' fill='%23ff5d73'/%3E%3Crect x='14' y='34' width='16' height='16' rx='4' fill='%2357e0c9'/%3E%3Ccircle cx='44' cy='44' r='9' fill='%23f4f1e8'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"黑料反差推特大赛","inLanguage":"zh-CN","description":"推特账号反差形象与旧帖翻出的公开整理赛事，含赛程、参赛条目与争议记录。"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"黑料反差推特大赛的参赛标准是什么？","acceptedAnswer":{"@type":"Answer","text":"组委会在10月28日发布的参赛须知里写明三条：账号注册满半年、反差内容发生在同一账号、原始截图带发布时间戳。缺一条即落选，已公布的28份落选名单中有14份是因为截图无时间戳。"}},
+{"@type":"Question","name":"反差推特大赛评审如何打分？","acceptedAnswer":{"@type":"Answer","text":"评分表分反差强度40分、证据完整30分、叙事节奏20分、公众反应10分。10月31日流出的评分表显示叙事节奏项权重从15分上调到20分，官方于11月2日承认调整但未公布完整调整说明。"}},
+{"@type":"Question","name":"被整理进参赛条目的账号可以申诉吗？","acceptedAnswer":{"@type":"Answer","text":"可以。申诉窗口是条目发布后72小时，需提交原帖时间线截图与账号归属证明。截至11月6日，共有7个账号提交申诉，其中3个成功撤下条目，4个维持原判。"}},
+{"@type":"Question","name":"黑料反差推特大赛的围观数据从哪来？","acceptedAnswer":{"@type":"Answer","text":"阅读量与转发数取自推特公开计数，抓取时间固定为每日22时，表格中标注了抓取日期。账号已删帖的条目用第三方缓存站快照补录，快照时间单独列出。"}},
+{"@type":"Question","name":"参赛条目里的旧帖截图会被二次剪辑吗？","acceptedAnswer":{"@type":"Answer","text":"规则禁止拼接与调色，要求保留界面元素。11月4日的复核中，编号T-19条目因截图裁掉发帖时间被降级，组委会在复核记录里附了原图与裁切图的对照。"}}
+]}
+</script>
+<style>
+:root{
+--ink:#151426;
+--ink-2:#2b2a3f;
+--paper:#f4f1e8;
+--paper-2:#eae5d6;
+--card:#fffdf6;
+--line:#d8d1bd;
+--accent:#ff5d73;
+--accent-2:#ffc86b;
+--mint:#57e0c9;
+--muted:#6d6a5e;
+--radius:14px;
+--shadow:0 2px 0 var(--line),0 10px 24px rgba(21,20,38,.07);
+--gap:clamp(14px,2vw,22px);
+--maxw:1180px;
+--ann:h:36px;
+--head:h:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--ann-h) + var(--head:h) + 10px)}
+body{
+margin:0;
+background:var(--paper);
+color:var(--ink);
+font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+line-height:1.75;
+font-size:16px;
+-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+h1,h2,h3,h4{line-height:1.3;margin:0}
+p{margin:0 0 .8em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(12px,3vw,26px)}
+
+/* 吸顶公告条 + 页头 */
+.sticky-zone{position:sticky;top:0;z-index:60}
+.annbar{
+height:var(--ann-h);display:flex;align-items:center;
+background:var(--ink);color:var(--paper);
+font-size:13px;letter-spacing:.02em;overflow:hidden;
+}
+.annbar .wrap{display:flex;gap:14px;align-items:center;width:100%;max-width:var(--maxw)}
+.annbar b{color:var(--accent-2);font-weight:600;white-space:nowrap}
+.annbar .tag{background:var(--accent);color:#fff;border-radius:4px;padding:1px 6px;font-size:11px;white-space:nowrap}
+.annbar .dots{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+header.site{
+background:rgba(244,241,232,.94);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line);
+height:var(--head);
+}
+header.site .wrap{display:flex;align-items:center;gap:18px;height:100%}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;letter-spacing:.01em;white-space:nowrap}
+.brand svg{width:30px;height:30px;flex:none}
+.brand span.txt{border-bottom:3px solid var(--accent-2)}
+nav.main{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none}
+nav.main::-webkit-scrollbar{display:none}
+nav.main a{padding:6px 10px;border-radius:8px;font-size:14px;color:var(--ink-2);white-space:nowrap}
+nav.main a:hover{background:var(--paper-2);text-decoration:none}
+nav.main a.on{background:var(--ink);color:var(--paper)}
+.head-tools{display:flex;align-items:center;gap:8px}
+.search{display:flex;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:2px 2px 2px 12px}
+.search input{border:0;background:transparent;width:130px;font-size:13px;padding:5px 2px;outline:none;color:var(--ink)}
+.search button{border:0;background:var(--accent);color:#fff;border-radius:999px;padding:5px 12px;font-size:13px}
+.btn-menu{display:none;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:6px 10px;font-size:13px}
+
+/* 首屏 */
+.hero{position:relative;padding:clamp(24px,4vw,44px) 0 clamp(20px,3vw,32px);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:var(--gap);align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.eyebrow .pip{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.hero h1{font-size:clamp(28px,4.6vw,50px);letter-spacing:-.01em;margin-bottom:12px}
+.hero h1 .hl{background:linear-gradient(transparent 62%,var(--accent-2) 62%)}
+.hero .lede{font-size:clamp(15px,1.4vw,17px);color:var(--ink-2);max-width:38em}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:7px;border-radius:10px;padding:9px 16px;font-size:14px;font-weight:600;border:1px solid transparent;transition:transform .16s ease}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn.primary{background:var(--accent);color:#fff;box-shadow:0 4px 0 #c93f54}
+.btn.ghost{background:var(--card);border-color:var(--line);box-shadow:0 3px 0 var(--line)}
+.hero-art{position:relative;aspect-ratio:1/.92;border-radius:22px;background:var(--ink);overflow:hidden;min-height:240px}
+.hero-art svg{width:100%;height:100%;display:block}
+.hero-stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;padding-top:16px;border-top:1px dashed var(--line)}
+.hero-stats div{font-size:13px;color:var(--muted)}
+.hero-stats b{display:block;font-size:22px;color:var(--ink);font-family:ui-monospace,monospace}
+
+/* 主区布局 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(18px,3vw,34px);padding-bottom:40px;align-items:start}
+.side{position:sticky;top:calc(var(--ann-h) + var(--head-h) + 14px);display:flex;flex-direction:column;gap:16px}
+@media (max-width:980px){
+.layout{grid-template-columns:1fr}
+.side{position:static;order:2}
+}
+section.block{margin-bottom:clamp(26px,3.4vw,44px);scroll-margin-top:calc(var(--ann-h) + var(--head-h) + 16px)}
+.block-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.block-head h2{font-size:clamp(19px,2.2vw,24px)}
+.block-head .kicker{font-size:12px;color:var(--muted);letter-spacing:.1em}
+.block-head .more{margin-left:auto;font-size:13px;color:var(--accent);font-weight:600}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+.card h3{font-size:16px;margin-bottom:6px}
+.card p{font-size:14px;color:var(--ink-2);margin-bottom:.5em}
+.meta{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;font-family:ui-monospace,monospace}
+.badge{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;background:var(--paper-2);color:var(--ink-2);border:1px solid var(--line)}
+.badge.hot{background:#ffe3e7;border-color:#ffb9c4;color:#a51e33}
+.badge.new{background:#dff8f2;border-color:#a5e8dc;color:#0f6b5c}
+
+/* 概览小卡 */
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap)}
+@media (max-width:720px){.grid-3,.grid-2{grid-template-columns:1fr}}
+
+/* 精选 */
+.feature{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow)}
+.feature .ft-body{padding:20px}
+.feature img{width:100%;height:100%;object-fit:cover}
+@media (max-width:640px){.feature{grid-template-columns:1fr}}
+
+/* 紧凑列表 */
+ul.tight{list-style:none;margin:0;padding:0}
+ul.tight li{display:grid;grid-template-columns:64px 1fr auto;gap:10px;align-items:baseline;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px}
+ul.tight li:last-child{border-bottom:0}
+ul.tight .d{font-family:ui-monospace,monospace;font-size:12px;color:var(--muted)}
+ul.tight .t{color:var(--ink)}
+ul.tight .t:hover{color:var(--accent)}
+
+/* 分类标签索引 */
+.tagindex{display:flex;flex-wrap:wrap;gap:8px}
+.tagindex a{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:13px;box-shadow:0 2px 0 var(--line);transition:transform .15s ease}
+.tagindex a:hover{transform:translateY(-2px);text-decoration:none;border-color:var(--accent)}
+.tagindex a i{font-style:normal;font-size:11px;color:var(--muted);font-family:ui-monospace,monospace}
+
+/* 深度解析 */
+.article{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:clamp(18px,3vw,34px)}
+.article h2{font-size:clamp(22px,2.6vw,28px);margin-bottom:8px}
+.article h3{font-size:18px;margin:26px 0 10px;padding-left:12px;border-left:4px solid var(--accent-2)}
+.article p{font-size:15.5px}
+.article .lead{font-size:16px;color:var(--ink-2)}
+.article blockquote{margin:16px 0;padding:14px 18px;background:var(--paper);border-left:4px solid var(--ink);border-radius:0 10px 10px 0;font-size:15px}
+.article blockquote cite{display:block;font-size:12px;color:var(--muted);font-style:normal;margin-top:6px;font-family:ui-monospace,monospace}
+.checktable{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
+.checktable th,.checktable td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.checktable th{background:var(--paper-2);font-weight:700;font-size:13px}
+.checktable td.ok{color:#0f6b5c;font-weight:600}
+.checktable td.no{color:#a51e33;font-weight:600}
+
+/* 步骤 */
+.steps{counter-reset:s;display:grid;gap:12px}
+.step{display:grid;grid-template-columns:38px 1fr;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:0 2px 0 var(--line)}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--ink);color:var(--accent-2);font-family:ui-monospace,monospace;font-weight:700}
+.step h3{font-size:15px;margin-bottom:3px}
+.step p{font-size:13.5px;margin:0;color:var(--ink-2)}
+
+/* FAQ */
+details.faq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0;margin-bottom:10px;box-shadow:0 2px 0 var(--line)}
+details.faq summary{list-style:none;cursor:pointer;padding:13px 16px;font-weight:600;font-size:14.5px;display:flex;gap:10px;align-items:flex-start}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::before{content:"＋";color:var(--accent);font-weight:700;flex:none}
+details.faq[open] summary::before{content:"－"}
+details.faq .ans{padding:0 16px 14px 40px;font-size:14px;color:var(--ink-2)}
+
+/* 评论 */
+.quote{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
+.quote .who{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--muted);margin-bottom:6px;font-family:ui-monospace,monospace}
+.quote .who .av{width:22px;height:22px;border-radius:50%;background:var(--mint);display:grid;place-items:center;color:#083a33;font-size:11px;font-weight:700;font-family:inherit}
+.quote p{font-size:14px;margin:0}
+.quote.warn{border-left:4px solid var(--accent)}
+
+/* 时间线 */
+.timeline{position:relative;padding-left:22px}
+.timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-item{position:relative;padding:0 0 16px 6px;font-size:14px}
+.tl-item::before{content:"";position:absolute;left:-22px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--accent-2);border:2px solid var(--ink)}
+.tl-item b{font-family:ui-monospace,monospace;font-size:12px;color:var(--accent);display:block}
+
+/* 侧栏 */
+.side .card h3{font-size:14.5px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--line)}
+.side ul{list-style:none;margin:0;padding:0}
+.side li{padding:6px 0;border-bottom:1px dashed var(--line);font-size:13.5px;display:flex;justify-content:space-between;gap:8px}
+.side li:last-child{border-bottom:0}
+.side li .n{font-family:ui-monospace,monospace;font-size:11px;color:var(--muted)}
+.side nav a{display:block;padding:6px 9px;border-radius:8px;font-size:13.5px;color:var(--ink-2)}
+.side nav a.active{background:var(--ink);color:var(--paper)}
+.side nav a:hover{text-decoration:none;background:var(--paper-2)}
+.side nav a.active:hover{background:var(--ink)}
+.digest{font-size:13.5px;color:var(--ink-2);background:var(--paper);border-radius:10px;padding:10px 12px;border:1px dashed var(--line)}
+
+/* 页脚 */
+footer.site{background:var(--ink);color:#cfc9b8;padding:36px 0 20px;margin-top:20px}
+footer .cols{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:24px}
+@media (max-width:820px){footer .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){footer .cols{grid-template-columns:1fr}}
+footer h4{color:var(--paper);font-size:13px;letter-spacing:.1em;margin-bottom:10px}
+footer a{font-size:13.5px;display:block;padding:3px 0;color:#cfc9b8}
+footer a:hover{color:var(--accent-2)}
+footer .fbrand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;color:var(--paper);margin-bottom:8px}
+footer .fbrand svg{width:26px;height:26px}
+footer .fnote{font-size:12px;color:#928d7c;margin-top:14px;border-top:1px solid #2f2e42;padding-top:14px;display:flex;flex-wrap:wrap;gap:8px 18px}
+
+/* 回到顶部 */
+#toTop{position:fixed;right:16px;bottom:18px;z-index:70;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow);display:none;place-items:center;color:var(--ink)}
+#toTop.show{display:grid}
+
+/* 搜索反馈 */
+#searchMsg{font-size:13px;padding:8px 12px;border-radius:9px;background:#fff3d6;border:1px solid #e8cf95;display:none}
+#searchMsg.show{display:block}
+
+@media (max-width:860px){
+nav.main{display:none;position:absolute;left:0;right:0;top:calc(var(--ann-h) + var(--head-h));background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;padding:8px 14px 14px;gap:2px;box-shadow:var(--shadow)}
+nav.main.open{display:flex}
+.btn-menu{display:inline-block}
+.hero-grid{grid-template-columns:1fr}
+.hero-art{order:-1;max-height:260px;min-height:200px}
+.search input{width:96px}
+}
+@media (max-width:420px){
+.brand span.txt{font-size:15px}
+.search{display:none}
+.head-tools .btn-join{padding:7px 10px;font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*{transition:none!important;animation:none!important}
+.btn:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-zone">
+  <div class="annbar" role="region" aria-label="站内公告">
+    <div class="wrap">
+      <span class="tag">更新</span>
+      <b>黑料反差推特大赛</b>
+      <span class="dots">11月7日 22:00 第 31 组条目复核完成，T-19 因截图裁切发帖时间被降级；申诉窗口开放至 11月10日</span>
+    </div>
+  </div>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="/#top" aria-label="返回顶部">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#151426"/><circle cx="23" cy="23" r="9" fill="#ffc86b"/><rect x="34" y="13" width="17" height="17" rx="4" fill="#ff5d73"/><rect x="13" y="34" width="17" height="17" rx="4" fill="#57e0c9"/><circle cx="45" cy="45" r="9" fill="#f4f1e8"/></svg>
+        <span class="txt">黑料反差推特大赛</span>
+      </a>
+      <button class="btn-menu" id="menuBtn" aria-expanded="false" aria-controls="mainNav">栏目</button>
+      <nav class="main" id="mainNav" aria-label="主题导航">
+        <a href="/#overview">赛况概览</a>
+        <a href="/#picks">精选条目</a>
+        <a href="/#latest">最新更新</a>
+        <a href="/#channels">分类频道</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#guide">围观指南</a>
+        <a href="/#faq">常见问题</a>
+      </nav>
+      <div class="head-tools">
+        <form class="search" id="searchForm" role="search">
+          <input id="q" type="search" placeholder="搜账号或条目" aria-label="站内搜索">
+          <button type="submit">查</button>
+        </form>
+        <a class="btn ghost btn-join" href="/#guide">投稿入口</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow"><span class="pip"></span> 2026 秋季场 · 第 31 组复核完成</div>
+          <h1>黑料反差<span class="hl">推特大赛</span></h1>
+          <p class="lede">把推特账号公开人设与旧帖内容并排摆出来，比谁的反差更有据可查。组委会按证据完整度打分，围观者按时间戳核对，每一条都带账号名、发帖日期与截图来源。</p>
+          <div class="cta">
+            <a class="btn primary" href="/#picks">看精选条目 →</a>
+            <a class="btn ghost" href="/#channels">按类别挑</a>
+          </div>
+          <div class="hero-stats">
+            <div><b>128</b>参赛条目</div>
+            <div><b>31</b>已复核组别</div>
+            <div><b>194</b>旧帖截图</div>
+            <div><b>7</b>申诉在审</div>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 400 370" role="img" aria-label="两张账号卡片并排对比的抽象构图">
+            <rect width="400" height="370" fill="#151426"/>
+            <circle cx="330" cy="60" r="70" fill="#2b2a3f"/>
+            <rect x="34" y="46" width="150" height="196" rx="14" fill="#f4f1e8" transform="rotate(-4 34 46)"/>
+            <rect x="206" y="86" width="150" height="196" rx="14" fill="#ff5d73" transform="rotate(4 206 86)"/>
+            <circle cx="72" cy="86" r="16" fill="#151426"/>
+            <rect x="52" y="118" width="106" height="9" rx="4" fill="#151426" opacity=".7"/>
+            <rect x="52" y="138" width="84" height="9" rx="4" fill="#151426" opacity=".35"/>
+            <rect x="52" y="166" width="112" height="7" rx="3" fill="#151426" opacity=".2"/>
+            <rect x="52" y="182" width="96" height="7" rx="3" fill="#151426" opacity=".2"/>
+            <circle cx="244" cy="126" r="16" fill="#ffc86b"/>
+            <rect x="224" y="158" width="106" height="9" rx="4" fill="#151426" opacity=".8"/>
+            <rect x="224" y="178" width="80" height="9" rx="4" fill="#151426" opacity=".4"/>
+            <rect x="224" y="206" width="112" height="7" rx="3" fill="#151426" opacity=".25"/>
+            <rect x="224" y="222" width="92" height="7" rx="3" fill="#151426" opacity=".25"/>
+            <path d="M170 150 L206 168" stroke="#57e0c9" stroke-width="4" stroke-dasharray="7 6"/>
+            <circle cx="188" cy="159" r="11" fill="#57e0c9"/>
+            <path d="M183 159 l4 4 l8 -9" stroke="#151426" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <rect x="60" y="288" width="280" height="34" rx="10" fill="#2b2a3f"/>
+            <circle cx="80" cy="305" r="7" fill="#ffc86b"/>
+            <rect x="96" y="300" width="150" height="10" rx="5" fill="#f4f1e8" opacity=".5"/>
+            <rect x="300" y="300" width="24" height="10" rx="5" fill="#57e0c9"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="layout">
+      <div class="content">
+
+        <section class="block" id="overview">
+          <div class="block-head">
+            <h2>赛况概览：128 份条目在什么状态下</h2>
+            <span class="kicker">截至 11月8日 09:00</span>
+          </div>
+          <div class="grid-3">
+            <div class="card">
+              <h3>证据通过率</h3>
+              <p>31 组已复核条目中，带完整发帖时间戳的有 96 份，占 75%。10月28日公布的 28 份落选名单里，14 份卡在截图没有时间戳。</p>
+              <div class="meta"><span>来源：组委会复核记录</span><span>11-03</span></div>
+            </div>
+            <div class="card">
+              <h3>反差强度分布</h3>
+              <p>评分表里反差强度占 40 分。目前拿到 34 分以上的有 17 份，集中在「素人公益人设 vs 旧帖嘲讽」和「企业号 vs 小号」两类。</p>
+              <div class="meta"><span>来源：评分表 v2.3</span><span>10-31</span></div>
+            </div>
+            <div class="card">
+              <h3>围观体量</h3>
+              <p>11月6日 22 时抓取，单条最高阅读 412 万，转发 1.9 万。第二到第五名在 78 万至 210 万之间，差距主要来自账号本身粉丝量。</p>
+              <div class="meta"><span>抓取：每日 22:00</span><span>11-06</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="picks">
+          <div class="block-head">
+            <h2>精选内容推荐</h2>
+            <a class="more" href="/#channels">全部类别 →</a>
+          </div>
+          <div class="feature">
+            <div class="ft-body">
+              <div class="meta" style="margin-bottom:8px"><span class="badge hot">本周榜首</span><span>T-07</span><span>11-02 复核</span></div>
+              <h3>「支教博主」@shanhai_2049 的 2019 年小号嘲讽帖</h3>
+              <p>主号 2023 年起发布 47 条乡村支教日记，小号 2019 年 8 月连发 6 条嘲讽同一地区学生的言论。对比图保留了两边界面的发帖时间，跨度 4 年 2 个月。</p>
+              <p>反差强度 37/40，证据完整 29/30。复核备注里写：小号绑定手机号与主号一致，组委会调取了推特公开的绑定变更记录。</p>
+              <div class="meta"><span>截图 12 张</span><span>原始帖 6 条</span><span>阅读 412 万</span></div>
+            </div>
+            <img src="https://picsum.photos/seed/heiliao-t07/560/520" width="560" height="520" loading="lazy" alt="支教博主主号与小号时间线并排的示意配图">
+          </div>
+
+          <div class="grid-2" style="margin-top:var(--gap)">
+            <div class="card">
+              <div class="meta" style="margin-bottom:6px"><span class="badge new">新入榜</span><span>T-24</span></div>
+              <h3>品牌运营号「夜航家电」促销文案与 2021 年内部群截图</h3>
+              <p>对外文案写「十年不涨价」，2021 年 3 月内部群聊里同一运营在讨论「先涨 18% 再打折」。截图有群名与日期，但缺少成员身份验证，证据分被扣到 21/30。</p>
+            </div>
+            <div class="card">
+              <div class="meta" style="margin-bottom:6px"><span class="badge">争议中</span><span>T-19</span></div>
+              <h3>摄影博主「光圈老周」作品署名争议的旧帖对照</h3>
+              <p>11月4日复核时发现截图裁掉了发帖时间栏，条目从 A 档降到 B 档。原帖仍在，时间可查，争议点在于裁切是否出于规避。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="latest">
+          <div class="block-head">
+            <h2>最新更新</h2>
+            <span class="kicker">按时间倒序</span>
+          </div>
+          <div class="card">
+            <ul class="tight">
+              <li><span class="d">11-07</span><a class="t" href="/#deep">第 31 组复核完成，T-19 降级，附原图与裁切图对照</a><span class="badge">复核</span></li>
+              <li><span class="d">11-06</span><a class="t" href="/#overview">22 时抓取数据更新，T-07 阅读量破 412 万</a><span class="badge">数据</span></li>
+              <li><span class="d">11-05</span><a class="t" href="/#faq">申诉窗口说明补充：需同时提交原帖时间线与账号归属证明</a><span class="badge">规则</span></li>
+              <li><span class="d">11-04</span><a class="t" href="/#picks">T-19 截图裁切问题进入复核，暂列 B 档</a><span class="badge">争议</span></li>
+              <li><span class="d">11-03</span><a class="t" href="/#overview">落选名单公布，28 份中 14 份缺时间戳</a><span class="badge">名单</span></li>
+              <li><span class="d">11-02</span><a class="t" href="/#picks">T-07 完成复核，小号绑定记录作为补充证据</a><span class="badge">复核</span></li>
+              <li><span class="d">10-31</span><a class="t" href="/#deep">评分表 v2.3 流出，叙事节奏权重由 15 分上调至 20 分</a><span class="badge">规则</span></li>
+              <li><span class="d">10-28</span><a class="t" href="/#guide">参赛须知发布，三条硬性门槛写进第 2 节</a><span class="badge">规则</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="block" id="channels">
+          <div class="block-head">
+            <h2>分类频道：按账号类型找</h2>
+            <span class="kicker">10 个入口</span>
+          </div>
+          <div class="tagindex">
+            <a href="/#picks">公益人设反差 <i>9</i></a>
+            <a href="/#picks">企业号小号对撞 <i>14</i></a>
+            <a href="/#picks">摄影作品署名争议 <i>7</i></a>
+            <a href="/#picks">情感博主旧帖翻出 <i>18</i></a>
+            <a href="/#picks">数码测评恰饭记录 <i>11</i></a>
+            <a href="/#picks">饭圈站姐换号 <i>13</i></a>
+            <a href="/#picks">知识付费讲师学历质疑 <i>6</i></a>
+            <a href="/#picks">游戏主播代打旧帖 <i>15</i></a>
+            <a href="/#picks">餐饮探店虚假好评 <i>12</i></a>
+            <a href="/#picks">健身教练资质对照 <i>8</i></a>
+          </div>
+        </section>
+
+        <section class="block" id="deep">
+          <div class="article">
+            <div class="meta" style="margin-bottom:8px"><span>深度解析</span><span>11-08</span><span>约 1400 字</span></div>
+            <h2>反差能不能被量化：评分表 v2.3 的三处硬伤</h2>
+            <p class="lead">把「人设崩塌」拆成 40 分反差强度、30 分证据完整、20 分叙事节奏、10 分公众反应，看起来像是可复现的度量。实际跑完 31 组之后，至少三处权重设定让结果偏离常识。</p>
+
+            <h3>一、40 分反差强度按「时间跨度」加权，制造了长账号优势</h3>
+            <p>评分表第 3 页写明：反差强度 = 主号定位与旧帖立场的语义距离 × 时间跨度系数，跨度每满 1 年加 0.1，上限 1.5。T-07 跨度 4 年 2 个月，系数取满 1.5，语义距离原始分 25，最终 37.5 进 37 分。</p>
+            <p>问题在于老账号天然占优。2020 年注册的 @shanhai_2049 拿满系数，2024 年注册的 T-22 只有 0.7，同样程度的立场翻转只能拿到 21 分左右。10月31日流出的评分表上，T-22 反差项写的是 22，备注栏一行小字：「跨度不足」。</p>
+            <blockquote>「时间跨度是线索强度，不是反差强度。把两者相乘，等于奖励账号活得久。」<cite>——豆瓣小组「推特考古队」10-31 讨论帖第 47 楼</cite></blockquote>
+
+            <h3>二、证据完整 30 分里，「绑定记录」只有组委会能查</h3>
+            <p>证据项分四小项：截图 10、时间戳 8、原帖可访问 7、账号归属 5。前两项投稿者自己能补，后两项里有 5 分要靠推特公开的绑定变更记录，普通围观者看不到，只能接受组委会结论。</p>
+            <table class="checktable">
+              <thead><tr><th>证据项</th><th>分值</th><th>投稿者可自查</th><th>实际依赖</th></tr></thead>
+              <tbody>
+                <tr><td>截图完整性</td><td>10</td><td class="ok">可以</td><td>原图与裁切图对照</td></tr>
+                <tr><td>发帖时间戳</td><td>8</td><td class="ok">可以</td><td>界面时间栏</td></tr>
+                <tr><td>原帖可访问</td><td>7</td><td class="no">部分</td><td>账号是否已删帖</td></tr>
+                <tr><td>账号归属</td><td>5</td><td class="no">不可以</td><td>组委会调取绑定记录</td></tr>
+              </tbody>
+            </table>
+            <p>T-07 的 29 分因此没有外部复核通道。任何一条引用它的帖子，都只能写「据组委会」，无法写到「据某日某页截图」。</p>
+
+            <h3>三、叙事节奏 20 分上调 5 分，被吐槽是给写手加分</h3>
+            <p>10月31日流出的评分表版本号是 v2.3，与 10月28日参赛须知附的 v2.2 相比，叙事节奏从 15 分提到 20 分，公众反应从 15 分压到 10 分。11月2日组委会在推特账号 @heiliao_arena 承认调整，原话是「为突出条目组织质量」，没有给完整说明。</p>
+            <p>调整后第一批评分里，T-12 条目靠一段 600 字的背景梳理拿到 19 分叙事项，而其反差强度只有 24 分。围观者 @三号观察员 11月5日发帖说：「现在是比谁写得像特稿。」这句被转 3400 次，支持与反对大致三七开。</p>
+            <p>可以核对的结构在这里：把 v2.2 与 v2.3 的权重差乘以 31 组，叙事项总分变化 +155 分，公众反应项 -155 分，正好抵消。也就是说，调整不影响总分排序的算术，只影响单项排序——而公示页面展示的是单项排序。</p>
+
+            <h3>可以反驳的三点</h3>
+            <p>其一，时间跨度系数上限 1.5 已经封顶，老账号优势有边界；其二，绑定记录不可外部复核，但申诉窗口允许当事人自证，11月6日前已有 3 个账号申诉成功；其三，叙事权重调整未改总分，公示单项只是展示习惯。</p>
+            <p>三点都成立时，仍留下一个未解的问题：单项排序被当作质量信号传播，而它依赖的是不可见的加分项。围观者看到「证据完整 29/30」，读到的是「几乎无可挑剔」，实际含义是「组委会内部核过，外部无从验证」。这层差异，条目卡片上没有写。</p>
+          </div>
+        </section>
+
+        <section class="block" id="guide">
+          <div class="block-head">
+            <h2>体验指南：自己核对一条条目</h2>
+            <span class="kicker">5 步</span>
+          </div>
+          <div class="steps">
+            <div class="step"><div><h3>先看截图时间栏</h3><p>推特网页版发帖时间在用户名下方，移动端在帖子底部。裁掉这一栏的条目，证据分先扣 8 分再看别的。</p></div></div>
+            <div class="step"><div><h3>打开原帖链接核对</h3><p>能打开的，比对文字是否一致；已删帖的，看条目是否附了第三方缓存快照与快照时间。</p></div></div>
+            <div class="step"><div><h3>确认两个账号是否同一人</h3><p>看主页简介互提、头像复用、绑定记录公示。只有「风格相似」不算，10月29日 T-15 就是因此被撤。</p></div></div>
+            <div class="step"><div><h3>读评分表的备注栏</h3><p>备注栏写「跨度不足」「归属待核」的条目，单项分普遍偏低，排序时容易误读为质量差。</p></div></div>
+            <div class="step"><div><h3>算一遍跨度系数</h3><p>用主号最早的发帖年份与旧帖年份相减，乘 0.1 加 1，超过 1.5 按 1.5 算。系数影响的是反差项，不影响证据项。</p></div></div>
+          </div>
+        </section>
+
+        <section class="block" id="faq">
+          <div class="block-head">
+            <h2>常见问题</h2>
+            <span class="kicker">5 问</span>
+          </div>
+          <details class="faq"><summary>黑料反差推特大赛的参赛标准是什么？</summary><div class="ans">10月28日发布的参赛须知第 2 节写明三条硬门槛：账号注册满半年、反差内容发生在同一账号、原始截图带发布时间戳。三条缺一即落选。10月31日公布的 28 份落选名单中，14 份因截图无时间戳，7 份因跨账号拼接，其余为账号注册不足半年。</div></details>
+          <details class="faq"><summary>反差推特大赛评审如何打分？</summary><div class="ans">四项：反差强度 40 分、证据完整 30 分、叙事节奏 20 分、公众反应 10 分。10月31日流出的 v2.3 评分表与 10月28日附的 v2.2 相比，叙事节奏由 15 分上调 5 分，公众反应由 15 分下调 5 分。组委会 11月2日承认调整，未公布完整说明。</div></details>
+          <details class="faq"><summary>被整理进参赛条目的账号可以申诉吗？</summary><div class="ans">可以，窗口是条目发布后 72 小时。需提交原帖时间线截图与账号归属证明。截至 11月6日 22 时，7 个账号提交申诉，3 个成功撤下条目，4 个维持原判。撤下的三条中有两条是跨账号误判。</div></details>
+          <details class="faq"><summary>围观数据从哪来，可信度如何？</summary><div class="ans">阅读量与转发数取自推特公开计数，抓取时间固定为每日 22 时，表格标注抓取日期。已删帖条目用第三方缓存站快照补录，快照时间单独列出。11月6日的抓取中，有 4 条因原帖删除改用快照，读数偏低约 12% 至 30%。</div></details>
+          <details class="faq"><summary>旧帖截图会被二次剪辑吗？</summary><div class="ans">规则禁止拼接与调色，要求保留界面元素。11月4日复核发现 T-19 截图裁掉发帖时间栏，条目不删但由 A 档降 B 档，复核记录附了原图与裁切图对照。同批复核中另有两条因调色被退回重传。</div></details>
+        </section>
+
+        <section class="block" id="comments">
+          <div class="block-head">
+            <h2>围观者评论</h2>
+            <span class="kicker">6 条</span>
+          </div>
+          <div class="grid-2">
+            <div class="quote"><div class="who"><span class="av">三</span>@三号观察员 · 11-05</div><p>T-12 的 600 字背景梳理确实写得好，但拿它当叙事 19 分的理由，等于比谁请得起写作。反差强度 24 分摆在那，排序反而靠后。</p></div>
+            <div class="quote warn"><div class="who"><span class="av">光</span>@光圈老周 · 11-06</div><p>T-19 那条我认。2023 年 8 月 14 日那张图我发过两次，裁剪的时候把时间栏切了，是我自己图省事。原帖还在，谁想核都可以去翻。</p></div>
+            <div class="quote"><div class="who"><span class="av">豆</span>@豆花不加糖 · 11-04</div><p>看了一圈，公益类的反差条目质量最高，因为旧帖里学生姓名都打码了。企业号那一栏反而像软文合集，T-24 的群聊截图连群成员头像都没露。</p></div>
+            <div class="quote"><div class="who"><span class="av">冷</span>@冷启动失败 · 11-03</div><p>评分表改过一次权重，公示页面只展示单项分，不展示权重版本号。翻到第三页才知道自己看的是 v2.3，这设计多少有点绕。</p></div>
+            <div class="quote"><div class="who"><span class="av">阿</span>@阿七不熬夜 · 11-02</div><p>提交过一次条目，卡在账号归属那 5 分。组委会说要调绑定记录，等了两天没回音，后来自己撤了。流程能跑，但速度是真的慢。</p></div>
+            <div class="quote"><div class="who"><span class="av">北</span>@北纬四十度 · 11-01</div><p>情感博主那 18 条里，至少有 5 条只是换了个昵称，观点没怎么变，算不算反差可以商榷。跨度系数一乘就进榜，说服力不太够。</p></div>
+          </div>
+        </section>
+
+        <section class="block" id="news">
+          <div class="block-head">
+            <h2>相关资讯</h2>
+            <span class="kicker">4 条外部动向</span>
+          </div>
+          <div class="grid-2">
+            <div class="card">
+              <h3>推特旧帖检索功能灰度上线</h3>
+              <p>11月3日起，部分账号可在搜索框用「from:用户名 before:2021-01-01」定位旧帖。功能未全量，测试账号 @推文考古日记 当天发了 6 张界面截图。</p>
+              <div class="meta"><span>来源：@推文考古日记</span><span>11-03</span></div>
+            </div>
+            <div class="card">
+              <h3>第三方缓存站宣布保留快照至 2027 年</h3>
+              <p>缓存站 SnapshotLine 11月5日公告，将推特公开帖子快照的保留期从 18 个月延长到 36 个月，理由是「考古类查询增长」。公告中的查询量数字为日均 41 万次。</p>
+              <div class="meta"><span>来源：SnapshotLine 公告页</span><span>11-05</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="rec">
+          <div class="block-head">
+            <h2>相关推荐</h2>
+            <span class="kicker">按兴趣挑</span>
+          </div>
+          <div class="tagindex">
+            <a href="/#picks">反差强度怎么算</a>
+            <a href="/#picks">发帖时间戳核对手册</a>
+            <a href="/#picks">企业号小号对撞案例集</a>
+            <a href="/#deep">评分表 v2.2 与 v2.3 差异</a>
+            <a href="/#guide">账号归属证明模板</a>
+            <a href="/#comments">申诉成功率数据</a>
+            <a href="/#latest">第 31 组复核记录</a>
+            <a href="/#channels">摄影类条目专题</a>
+          </div>
+        </section>
+
+        <section class="block" id="stats">
+          <div class="block-head">
+            <h2>补充板块：十条数据的更新时点</h2>
+            <span class="kicker">时间线</span>
+          </div>
+          <div class="card">
+            <div class="timeline">
+              <div class="tl-item"><b>10-28</b>参赛须知 v1.0 发布，三条硬门槛写进第 2 节。</div>
+              <div class="tl-item"><b>10-29</b>T-15 因跨账号误判被撤，组委会在复核日志第 4 条记录。</div>
+              <div class="tl-item"><b>10-31</b>评分表 v2.3 流出，叙事节奏上调 5 分；同日落选名单 28 份公布。</div>
+              <div class="tl-item"><b>11-02</b>组委会推特账号承认权重调整；T-07 完成复核，绑定记录作为补充证据。</div>
+              <div class="tl-item"><b>11-03</b>推特旧帖检索功能灰度上线，搜索语法截图流出。</div>
+              <div class="tl-item"><b>11-04</b>T-19 截图裁切问题进入复核，暂列 B 档。</div>
+              <div class="tl-item"><b>11-05</b>申诉窗口说明补充；SnapshotLine 延长快照保留期至 36 个月。</div>
+              <div class="tl-item"><b>11-06</b>22 时抓取数据更新，T-07 阅读 412 万；申诉累计 7 件，3 件撤下。</div>
+              <div class="tl-item"><b>11-07</b>第 31 组复核完成，T-19 正式降级，附原图与裁切图对照。</div>
+              <div class="tl-item"><b>11-08</b>本页数据整体校对一次，与复核记录第 31 组对齐。</div>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /content -->
+
+      <aside class="side" aria-label="侧栏">
+        <div class="card">
+          <h3>栏目导航</h3>
+          <nav id="sideNav">
+            <a href="/#overview">赛况概览</a>
+            <a href="/#picks">精选内容推荐</a>
+            <a href="/#latest">最新更新</a>
+            <a href="/#channels">分类频道</a>
+            <a href="/#deep">深度解析</a>
+            <a href="/#guide">体验指南</a>
+            <a href="/#faq">常见问题</a>
+            <a href="/#comments">围观者评论</a>
+            <a href="/#news">相关资讯</a>
+            <a href="/#rec">相关推荐</a>
+            <a href="/#stats">数据时间线</a>
+          </nav>
+        </div>
+        <div class="card">
+          <h3>反差强度前五</h3>
+          <ul>
+            <li><span>T-07 公益人设</span><span class="n">37</span></li>
+            <li><span>T-03 站姐换号</span><span class="n">35</span></li>
+            <li><span>T-11 数码恰饭</span><span class="n">34</span></li>
+            <li><span>T-22 情感旧帖</span><span class="n">34</span></li>
+            <li><span>T-26 探店好评</span><span class="n">33</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>今日围观提示</h3>
+          <div class="digest">11月10日 24 时是 T-19 申诉窗口截止时间。核对时先看截图时间栏，再看原帖是否可访问，两步能排掉七成争议。</div>
+        </div>
+        <div class="card">
+          <h3>投稿状态</h3>
+          <ul>
+            <li><span>待复核</span><span class="n">9</span></li>
+            <li><span>复核中</span><span class="n">4</span></li>
+            <li><span>申诉在审</span><span class="n">7</span></li>
+            <li><span>已撤下</span><span class="n">3</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <div class="wrap"><div id="searchMsg" role="status" aria-live="polite"></div></div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="fbrand">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#2b2a3f"/><circle cx="23" cy="23" r="9" fill="#ffc86b"/><rect x="34" y="13" width="17" height="17" rx="4" fill="#ff5d73"/><rect x="13" y="34" width="17" height="17" rx="4" fill="#57e0c9"/><circle cx="45" cy="45" r="9" fill="#f4f1e8"/></svg>
+          黑料反差推特大赛
+        </div>
+        <p style="font-size:13.5px;max-width:22em;margin:0">把账号公开人设与旧帖并排摆出，按时间戳、原帖可访问性与绑定记录逐项核对，记录每一次复核与申诉的结果。</p>
+      </div>
+      <div>
+        <h4>赛程</h4>
+        <a href="/#overview">赛况概览</a>
+        <a href="/#latest">最新更新</a>
+        <a href="/#stats">数据时间线</a>
+        <a href="/#faq">申诉与规则</a>
+      </div>
+      <div>
+        <h4>条目</h4>
+        <a href="/#picks">精选条目</a>
+        <a href="/#channels">分类频道</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#rec">相关推荐</a>
+      </div>
+      <div>
+        <h4>参与</h4>
+        <a href="/#guide">投稿五步</a>
+        <a href="/#comments">围观者评论</a>
+        <a href="/#news">相关资讯</a>
+        <a href="/#top">回到顶部</a>
+      </div>
+    </div>
+    <div class="fnote">
+      <span>页面更新：2026-11-08 09:00，对应第 31 组复核与 11月6日 22 时抓取数据</span>
+      <span>账号、条目与评分为赛事示例数据，用于展示核对流程</span>
+      <span>© 2026 黑料反差推特大赛整理组</span>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  var menuBtn=document.getElementById('menuBtn');
+  var nav=document.getElementById('mainNav');
+  if(menuBtn&&nav){
+    menuBtn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.innerWidth<=860){
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+      }
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&nav.classList.contains('open')){
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.focus();
+      }
+    });
+  }
+
+  var toTop=document.getElementById('toTop');
+  function onScroll(){
+    if(!toTop)return;
+    if(window.scrollY>600){toTop.classList.add('show')}else{toTop.classList.remove('show')}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+  if(toTop){
+    toTop.addEventListener('click',function(){
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  }
+
+  var sideLinks=Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var sections=sideLinks.map(function(a){
+    var id=a.getAttribute('href').replace('/#','');
+    return document.getElementById(id);
+  }).filter(Boolean);
+  function highlight(){
+    var pos=window.scrollY+160;
+    var cur=null;
+    sections.forEach(function(s){
+      if(s.offsetTop<=pos)cur=s;
+    });
+    sideLinks.forEach(function(a){
+      a.classList.toggle('active',cur&&a.getAttribute('href')==='/# '+cur.id.replace(/^/,'')||cur&&a.getAttribute('href')==='#'+cur.id);
+    });
+    // 简化：直接按 id 比对
+    var curId=cur?cur.id:null;
+    sideLinks.forEach(function(a){
+      a.classList.toggle('active',a.getAttribute('href')==='#'+curId);
+    });
+  }
+  window.addEventListener('scroll',highlight,{passive:true});
+  highlight();
+
+  var form=document.getElementById('searchForm');
+  var input=document.getElementById('q');
+  var msg=document.getElementById('searchMsg');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var q=(input.value||'').trim();
+      if(!q){msg.textContent='请输入账号名、条目编号或类别，例如 T-07、支教、时间戳。';msg.classList.add('show');return;}
+      var targets=document.querySelectorAll('main h3, main .tight .t, main .faq summary, main .tagindex a');
+      var hit=null;
+      for(var i=0;i<targets.length;i++){
+        if(targets[i].textContent.indexOf(q)>-1){hit=targets[i];break;}
+      }
+      if(hit){
+        msg.textContent='找到匹配：'+hit.textContent.slice(0,40)+'，已定位。';
+        msg.classList.add('show');
+        hit.scrollIntoView({behavior:'smooth',block:'center'});
+      }else{
+        msg.textContent='没有找到与「'+q+'」匹配的条目。可试试条目编号（T-07）、账号类型（公益、探店）或功能词（时间戳、申诉）。';
+        msg.classList.add('show');
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
