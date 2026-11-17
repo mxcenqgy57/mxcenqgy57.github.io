@@ -1,0 +1,909 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>私密研究所入口-隐私研究资源与入口指引</title>
+<meta name="description" content="私密研究所入口汇集隐私计算、匿名网络与数据防护的研究资源索引，整理可信入口清单、工具评测、术语解析与实操指南，帮助读者按主题快速定位可用条目与判断依据。">
+<meta name="keywords" content="私密研究所入口">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f3a4d'/%3E%3Cpath d='M32 14l14 7v12c0 9-6 15-14 18-8-3-14-9-14-18V21z' fill='none' stroke='%237fd4c1' stroke-width='3'/%3E%3Ccircle cx='32' cy='31' r='4' fill='%237fd4c1'/%3E%3Cpath d='M32 35v7' stroke='%237fd4c1' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#17242e;
+  --ink-soft:#42535f;
+  --muted:#6b7b86;
+  --paper:#f6f7f4;
+  --card:#ffffff;
+  --line:#dde3e0;
+  --brand:#1f3a4d;
+  --brand-deep:#132731;
+  --accent:#2f8f7b;
+  --accent-soft:#e3f2ed;
+  --warn:#a8642a;
+  --warn-soft:#f8efe2;
+  --radius:12px;
+  --radius-s:8px;
+  --shadow:0 1px 2px rgba(23,36,46,.05),0 8px 24px rgba(23,36,46,.06);
+  --shadow-lift:0 2px 4px rgba(23,36,46,.06),0 14px 30px rgba(23,36,46,.1);
+  --font:system-ui,-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --fs-h1:clamp(1.9rem,1.4rem + 2.2vw,3rem);
+  --fs-h2:clamp(1.3rem,1.15rem + .7vw,1.7rem);
+  --fs-h3:1.06rem;
+  --fs-body:.96rem;
+  --fs-s:.83rem;
+  --space:clamp(1rem,.8rem + .6vw,1.5rem);
+  --ann-h:38px;
+  --head-h:62px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--ann-h) + var(--head-h) + 14px)}
+body{
+  margin:0;font-family:var(--font);font-size:var(--fs-body);line-height:1.75;
+  color:var(--ink);background:var(--paper);-webkit-text-size-adjust:100%;
+}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700;letter-spacing:.01em}
+p{margin:0 0 .85em}
+p:last-child{margin-bottom:0}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+ul,ol{margin:0 0 .85em;padding-left:1.25em}
+li{margin-bottom:.35em}
+img{max-width:100%;height:auto;display:block}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* 公告条 + 页头 */
+.sticky-wrap{position:sticky;top:0;z-index:60}
+.announce{
+  background:var(--brand-deep);color:#d8e6e1;font-size:var(--fs-s);
+  height:var(--ann-h);display:flex;align-items:center;
+}
+.announce .wrap{display:flex;align-items:center;gap:.6em;flex-wrap:nowrap;overflow:hidden}
+.announce strong{
+  color:#fff;font-weight:600;letter-spacing:.02em;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:.4em;
+}
+.announce .dot{width:7px;height:7px;border-radius:50%;background:#62c9ac;flex:none;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.announce .txt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#b9cdc6}
+.announce .txt b{color:#f0d9b5;font-weight:600}
+header.site{
+  background:rgba(246,247,244,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);height:var(--head-h);display:flex;align-items:center;
+}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(.9rem,2.5vw,1.75rem)}
+.head-inner{display:flex;align-items:center;gap:1rem;width:100%}
+.brand{display:flex;align-items:center;gap:.55rem;color:var(--brand);font-weight:800;font-size:1.02rem;letter-spacing:.02em;flex:none}
+.brand:hover{text-decoration:none}
+.brand svg{width:30px;height:30px;flex:none}
+nav.main{margin-left:auto;display:flex;align-items:center;gap:.15rem}
+nav.main a{
+  color:var(--ink-soft);font-size:.88rem;padding:.4rem .55rem;border-radius:6px;white-space:nowrap;
+}
+nav.main a:hover{background:var(--accent-soft);color:var(--brand-deep);text-decoration:none}
+.head-tools{display:flex;gap:.45rem;align-items:center;flex:none}
+.search-btn{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:.34rem .6rem;display:inline-flex;align-items:center;gap:.35rem;color:var(--ink-soft);font-size:.85rem}
+.search-btn:hover{border-color:var(--accent);color:var(--brand-deep)}
+.search-btn svg{width:15px;height:15px}
+.menu-btn{display:none;border:1px solid var(--line);background:var(--card);border-radius:8px;width:38px;height:34px;align-items:center;justify-content:center;color:var(--brand)}
+.menu-btn svg{width:18px;height:18px}
+
+/* 搜索面板 */
+.search-panel{border-top:1px solid var(--line);background:var(--card);display:none}
+.search-panel.open{display:block}
+.search-panel .wrap{padding-top:.8rem;padding-bottom:.9rem}
+.search-form{display:flex;gap:.5rem}
+.search-form input{
+  flex:1;border:1px solid var(--line);border-radius:8px;padding:.55rem .75rem;font-family:inherit;font-size:.92rem;background:var(--paper);color:var(--ink);
+}
+.search-form input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.search-form button{border:0;background:var(--brand);color:#fff;border-radius:8px;padding:.5rem 1rem;font-size:.9rem}
+.search-result{margin-top:.7rem;font-size:.88rem;color:var(--ink-soft)}
+.search-result ul{margin:.4rem 0 0;padding-left:1.1em}
+.search-result li{margin-bottom:.18rem}
+.search-empty{color:var(--warn);}
+
+/* 首屏 */
+.hero{background:linear-gradient(160deg,#132731 0%,#1f3a4d 58%,#24505c 100%);color:#e8f0ed;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(1.2rem,3vw,2.6rem);padding:clamp(2rem,4.5vw,3.6rem) 0 clamp(2.2rem,4.5vw,3.4rem);position:relative;z-index:2;align-items:center}
+.hero h1{font-size:var(--fs-h1);color:#fff;letter-spacing:.01em;margin-bottom:.55rem}
+.hero .lede{color:#b8cdc7;font-size:1.02rem;max-width:34em;margin-bottom:1.15rem}
+.hero .lede b{color:#f0d9b5;font-weight:600}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.3rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.1rem;border-radius:9px;font-size:.92rem;font-weight:600;border:1px solid transparent;transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-primary{background:#62c9ac;color:#0f2620}
+.btn-primary:hover{box-shadow:0 8px 20px rgba(98,201,172,.28)}
+.btn-ghost{border-color:rgba(232,240,237,.35);color:#e8f0ed}
+.btn-ghost:hover{background:rgba(232,240,237,.1)}
+.hero-stats{display:flex;gap:1.6rem;flex-wrap:wrap;border-top:1px solid rgba(232,240,237,.18);padding-top:.9rem}
+.hero-stats div{font-size:.8rem;color:#9fb8b1;line-height:1.5}
+.hero-stats b{display:block;font-size:1.28rem;color:#fff;font-weight:700;letter-spacing:.02em}
+.hero-art{position:relative;display:flex;justify-content:center;align-items:center;min-height:250px}
+.hero-art svg{width:100%;max-width:400px;height:auto;filter:drop-shadow(0 12px 28px rgba(0,0,0,.28))}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 22%,rgba(98,201,172,.2),transparent 55%);pointer-events:none}
+
+/* 布局 */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(1.2rem,2.6vw,2.2rem);padding:clamp(1.8rem,3.5vw,2.8rem) 0 1rem;align-items:start}
+main{min-width:0}
+aside.side{min-width:0;position:sticky;top:calc(var(--ann-h) + var(--head-h) + 16px);max-height:calc(100vh - var(--ann-h) - var(--head-h) - 32px);overflow:auto;scrollbar-width:thin}
+.side-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.05rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+.side-card h3{font-size:.92rem;margin-bottom:.65rem;color:var(--brand)}
+.side-nav a{display:block;padding:.3rem .5rem;border-radius:6px;font-size:.86rem;color:var(--ink-soft);border-left:3px solid transparent;line-height:1.5}
+.side-nav a:hover{background:var(--paper);text-decoration:none;color:var(--brand)}
+.side-nav a.active{background:var(--accent-soft);color:var(--brand-deep);border-left-color:var(--accent);font-weight:600}
+.side-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.side-tags a{font-size:.8rem;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:.16rem .62rem;color:var(--ink-soft)}
+.side-tags a:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--brand-deep);text-decoration:none}
+
+/* 板块通用 */
+section.block{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(1.1rem,2.2vw,1.6rem);margin-bottom:clamp(1.1rem,2.2vw,1.6rem);box-shadow:var(--shadow);scroll-margin-top:calc(var(--ann-h) + var(--head-h) + 14px)}
+section.block > h2{font-size:var(--fs-h2);color:var(--brand-deep);margin-bottom:.28rem;display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+section.block > h2 .idx{font-size:.72rem;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:.1rem .42rem;letter-spacing:.05em}
+.sec-sub{color:var(--muted);font-size:.87rem;margin-bottom:1rem}
+h3{font-size:var(--fs-h3);color:var(--brand);margin:1.1rem 0 .5rem}
+h3:first-child{margin-top:0}
+.tag{display:inline-block;font-size:.76rem;background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:.08rem .45rem;color:var(--muted);margin-left:.35rem;font-weight:500;vertical-align:middle}
+.meta{font-size:.79rem;color:var(--muted)}
+.grid{display:grid;gap:.9rem}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* 概览 */
+.overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem}
+.ov-item{border:1px solid var(--line);border-radius:var(--radius-s);padding:.75rem .85rem;background:linear-gradient(180deg,#fbfcfa,#f4f7f4)}
+.ov-item b{display:block;color:var(--brand-deep);font-size:.95rem;margin-bottom:.2rem}
+.ov-item p{font-size:.86rem;color:var(--ink-soft);margin:0}
+.ov-item .num{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700}
+
+/* 精选卡片 */
+.pick-list{display:grid;gap:.9rem;grid-template-columns:repeat(2,minmax(0,1fr))}
+.pick{border:1px solid var(--line);border-radius:var(--radius-s);overflow:hidden;background:var(--card);display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease}
+.pick:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+.pick img{width:100%;height:130px;object-fit:cover;background:#e6ece8}
+.pick .body{padding:.7rem .8rem .8rem}
+.pick h4{font-size:.95rem;color:var(--brand-deep);margin-bottom:.28rem;line-height:1.4}
+.pick p{font-size:.84rem;color:var(--ink-soft);margin:0 0 .45rem}
+.pick .meta{display:flex;justify-content:space-between;gap:.5rem;align-items:center}
+
+/* 最新更新紧凑列表 */
+.updates{list-style:none;padding:0;margin:0}
+.updates li{display:grid;grid-template-columns:auto 1fr auto;gap:.7rem;align-items:baseline;padding:.55rem 0;border-bottom:1px dashed var(--line)}
+.updates li:last-child{border-bottom:0}
+.updates time{font-size:.79rem;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.updates .t{font-size:.9rem;color:var(--ink)}
+.updates .t b{color:var(--brand)}
+.updates .src{font-size:.78rem;color:var(--muted);white-space:nowrap}
+
+/* 分类入口 */
+.cat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
+.cat{display:block;border:1px solid var(--line);border-radius:var(--radius-s);padding:.7rem .8rem;background:var(--card);transition:border-color .18s ease,transform .18s ease}
+.cat:hover{border-color:var(--accent);transform:translateY(-2px);text-decoration:none}
+.cat b{display:block;color:var(--brand-deep);font-size:.92rem;margin-bottom:.15rem}
+.cat span{font-size:.79rem;color:var(--muted)}
+
+/* 深度解析 */
+.analysis{background:linear-gradient(180deg,#fbfcfa,#fff);border:1px solid var(--line);border-radius:var(--radius-s);padding:clamp(.9rem,2vw,1.4rem)}
+.analysis h3{border-left:4px solid var(--accent);padding-left:.6rem}
+.analysis p{color:var(--ink-soft)}
+.analysis strong{color:var(--brand-deep)}
+.fact-box{border:1px solid var(--line);border-radius:var(--radius-s);overflow:hidden;margin:.9rem 0;font-size:.86rem}
+.fact-box table{width:100%;border-collapse:collapse}
+.fact-box th,.fact-box td{padding:.48rem .65rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.fact-box thead th{background:#eef3f0;color:var(--brand-deep);font-weight:600;font-size:.82rem}
+.fact-box tbody tr:last-child td{border-bottom:0}
+.fact-box .ok{color:var(--accent);font-weight:600}
+.fact-box .no{color:var(--warn);font-weight:600}
+.note{border-left:3px solid var(--warn);background:var(--warn-soft);padding:.55rem .75rem;border-radius:0 6px 6px 0;font-size:.85rem;color:#6b4a24;margin:.8rem 0}
+
+/* 步骤 */
+.steps{counter-reset:step;list-style:none;padding:0;margin:0;display:grid;gap:.7rem}
+.steps li{counter-increment:step;position:relative;padding:.65rem .8rem .65rem 2.7rem;border:1px solid var(--line);border-radius:var(--radius-s);background:var(--card);font-size:.88rem;color:var(--ink-soft)}
+.steps li::before{content:counter(step);position:absolute;left:.7rem;top:.6rem;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--accent-soft);color:var(--brand-deep);font-size:.82rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps li b{color:var(--brand-deep);display:block;font-size:.9rem}
+
+/* 对照面板 */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:var(--radius-s);overflow:hidden;margin:.9rem 0}
+.compare > div{padding:.8rem .9rem;font-size:.85rem}
+.compare > div:first-child{background:#f7f2ea;border-right:1px solid var(--line)}
+.compare > div:last-child{background:#eaf4f0}
+.compare h4{font-size:.88rem;margin-bottom:.45rem;color:var(--brand-deep)}
+.compare ul{padding-left:1.05em;margin:0}
+.compare li{margin-bottom:.25rem;color:var(--ink-soft)}
+
+/* FAQ */
+details.faq{border:1px solid var(--line);border-radius:var(--radius-s);background:var(--card);margin-bottom:.55rem;overflow:hidden}
+details.faq summary{cursor:pointer;padding:.7rem .85rem;font-weight:600;color:var(--brand-deep);font-size:.92rem;list-style:none;display:flex;justify-content:space-between;gap:.6rem;align-items:baseline}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"+";color:var(--accent);font-size:1.1rem;line-height:1;flex:none;font-weight:400}
+details.faq[open] summary::after{content:"–"}
+details.faq .ans{padding:0 .85rem .8rem;font-size:.87rem;color:var(--ink-soft);border-top:1px dashed var(--line);margin-top:0;padding-top:.6rem}
+
+/* 评论 */
+.cmts{display:grid;gap:.7rem}
+.cmt{border:1px solid var(--line);border-radius:var(--radius-s);padding:.7rem .8rem;background:var(--card);font-size:.87rem}
+.cmt .who{display:flex;justify-content:space-between;gap:.5rem;font-size:.79rem;color:var(--muted);margin-bottom:.3rem}
+.cmt .who b{color:var(--brand);font-weight:600}
+.cmt p{margin:0;color:var(--ink-soft)}
+.cmt .ref{font-size:.76rem;color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:.02rem .35rem;margin-left:.25rem;white-space:nowrap}
+
+/* 资讯 / 推荐 */
+.news{list-style:none;padding:0;margin:0}
+.news li{padding:.6rem 0;border-bottom:1px dashed var(--line)}
+.news li:last-child{border-bottom:0}
+.news a{font-size:.9rem;color:var(--brand-deep);font-weight:600}
+.news p{font-size:.83rem;color:var(--muted);margin:.2rem 0 0}
+.reco{display:flex;flex-wrap:wrap;gap:.45rem}
+.reco a{font-size:.83rem;background:var(--accent-soft);color:var(--brand-deep);border-radius:20px;padding:.22rem .72rem;border:1px solid transparent}
+.reco a:hover{border-color:var(--accent);text-decoration:none}
+
+/* 榜单 */
+.rank{list-style:none;padding:0;margin:0;counter-reset:rk}
+.rank li{counter-increment:rk;display:grid;grid-template-columns:auto 1fr auto;gap:.6rem;align-items:center;padding:.48rem 0;border-bottom:1px dashed var(--line);font-size:.88rem}
+.rank li:last-child{border-bottom:0}
+.rank li::before{content:counter(rk);width:1.4rem;height:1.4rem;border-radius:6px;background:var(--paper);border:1px solid var(--line);color:var(--brand);font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.rank li:nth-child(-n+3)::before{background:var(--accent-soft);color:var(--brand-deep);border-color:transparent}
+.rank .bar{font-size:.76rem;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* 时间线 */
+.timeline{list-style:none;padding:0 0 0 1.1rem;margin:.4rem 0 0;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 .8rem 1rem;font-size:.86rem;color:var(--ink-soft)}
+.timeline li::before{content:"";position:absolute;left:-1.42rem;top:.42rem;width:9px;height:9px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.timeline time{display:block;font-size:.77rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.timeline b{color:var(--brand-deep)}
+
+/* 页尾 */
+footer.site{background:var(--brand-deep);color:#b9cdc6;margin-top:1.5rem;padding:clamp(1.6rem,3.5vw,2.4rem) 0 1.2rem;font-size:.86rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:1.6rem;margin-bottom:1.5rem}
+.foot-brand{display:flex;align-items:center;gap:.5rem;color:#fff;font-weight:800;font-size:1rem;margin-bottom:.5rem}
+.foot-brand svg{width:26px;height:26px}
+footer.site p{color:#9fb8b1;margin:0 0 .6rem;font-size:.84rem}
+footer.site h4{color:#e8f0ed;font-size:.88rem;margin-bottom:.55rem}
+footer.site ul{list-style:none;padding:0;margin:0}
+footer.site li{margin-bottom:.32rem}
+footer.site a{color:#b9cdc6;font-size:.84rem}
+footer.site a:hover{color:#fff;text-decoration:none}
+.foot-bottom{border-top:1px solid rgba(232,240,237,.15);padding-top:.9rem;font-size:.78rem;color:#8ba39b;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+/* 回到顶部 */
+#toTop{position:fixed;right:18px;bottom:22px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--brand);box-shadow:var(--shadow-lift);display:none;align-items:center;justify-content:center;z-index:50;transition:transform .18s ease}
+#toTop.show{display:flex}
+#toTop:hover{transform:translateY(-3px)}
+#toTop svg{width:18px;height:18px}
+
+/* 响应式 */
+@media (max-width:1000px){
+  .layout{grid-template-columns:1fr}
+  aside.side{position:static;max-height:none;overflow:visible;order:2}
+  main{order:1}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{min-height:200px;order:-1}
+  .hero-art svg{max-width:320px}
+}
+@media (max-width:820px){
+  nav.main{display:none}
+  .menu-btn{display:inline-flex}
+  nav.main.open{
+    display:flex;position:absolute;left:0;right:0;top:calc(var(--ann-h) + var(--head-h));
+    background:var(--card);border-bottom:1px solid var(--line);box-shadow:var(--shadow);
+    flex-direction:column;align-items:stretch;padding:.5rem .9rem .7rem;gap:.1rem;
+  }
+  nav.main.open a{padding:.55rem .5rem;border-bottom:1px solid var(--line);border-radius:0}
+  nav.main.open a:last-child{border-bottom:0}
+  .search-btn span{display:none}
+}
+@media (max-width:680px){
+  .overview,.pick-list,.g2,.g3,.cat-grid{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  .compare > div:first-child{border-right:0;border-bottom:1px solid var(--line)}
+  .hero-stats{gap:1.1rem}
+  .updates li{grid-template-columns:1fr auto}
+  .updates time{grid-column:1/-1;order:3}
+  .foot-grid{grid-template-columns:1fr}
+  .announce .txt{font-size:.78rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+  .pick:hover,.cat:hover,.btn:hover,#toTop:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-wrap">
+  <div class="announce" role="region" aria-label="站内更新公告">
+    <div class="wrap">
+      <strong><span class="dot" aria-hidden="true"></span>私密研究所入口</strong>
+      <span class="txt">2026-11-06 更新：匿名邮箱服务 7 项对比表上线；Tails 6.9 镜像校验值已核对 <b>·</b> 本周入口清单新增 3 条</span>
+    </div>
+  </div>
+
+  <header class="site">
+    <div class="wrap head-inner">
+      <a class="brand" href="/#top" aria-label="私密研究所入口 首页">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1f3a4d"/><path d="M32 14l14 7v12c0 9-6 15-14 18-8-3-14-9-14-18V21z" fill="none" stroke="#7fd4c1" stroke-width="3"/><circle cx="32" cy="31" r="4" fill="#7fd4c1"/><path d="M32 35v7" stroke="#7fd4c1" stroke-width="3" stroke-linecap="round"/></svg>
+        <span>私密研究所入口</span>
+      </a>
+      <nav class="main" id="mainNav" aria-label="主导航">
+        <a href="/#overview">领域概览</a>
+        <a href="/#picks">精选推荐</a>
+        <a href="/#updates">最新更新</a>
+        <a href="/#cats">分类入口</a>
+        <a href="/#analysis">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#reco">相关推荐</a>
+      </nav>
+      <div class="head-tools">
+        <button class="search-btn" id="searchToggle" aria-expanded="false" aria-controls="searchPanel" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <span>站内查找</span>
+        </button>
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav" aria-label="打开导航菜单" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="search-panel" id="searchPanel">
+      <div class="wrap">
+        <form class="search-form" id="searchForm" role="search">
+          <label for="q" class="visually-hidden" style="position:absolute;left:-9999px">搜索条目</label>
+          <input id="q" name="q" type="search" placeholder="搜工具名、术语或条目，例如：Tor 网桥、PGP 公钥、差分隐私" autocomplete="off">
+          <button type="submit">查找</button>
+        </form>
+        <div class="search-result" id="searchResult" aria-live="polite"></div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>私密研究所入口</h1>
+        <p class="lede">围绕匿名网络、端到端加密与数据最小化三条线整理的研究索引。每条入口标注维护方、最近一次校验日期和已知限制，<b>7 天内复核 42 条</b>，失效条目直接下架。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/#picks">查看本周精选 6 条</a>
+          <a class="btn btn-ghost" href="/#guide">阅读入口校验方法</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>182</b>收录条目</div>
+          <div><b>12</b>主题频道</div>
+          <div><b>42</b>近 7 日复核</div>
+          <div><b>2026-11-08</b>数据基准日</div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 320" role="img">
+          <defs>
+            <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#62c9ac"/><stop offset="1" stop-color="#2f8f7b"/>
+            </linearGradient>
+          </defs>
+          <circle cx="210" cy="158" r="118" fill="none" stroke="#2c4a56" stroke-width="1.5" stroke-dasharray="4 7"/>
+          <circle cx="210" cy="158" r="86" fill="none" stroke="#33546180" stroke-width="1.5"/>
+          <path d="M210 62l62 30v52c0 40-27 66-62 78-35-12-62-38-62-78V92z" fill="#18303b" stroke="url(#ring)" stroke-width="3"/>
+          <circle cx="210" cy="146" r="15" fill="none" stroke="#7fd4c1" stroke-width="3"/>
+          <circle cx="210" cy="146" r="5" fill="#62c9ac"/>
+          <path d="M210 161v30" stroke="#7fd4c1" stroke-width="3" stroke-linecap="round"/>
+          <g stroke="#62c9ac" stroke-width="2">
+            <circle cx="96" cy="112" r="5" fill="#132731"/>
+            <circle cx="330" cy="98" r="5" fill="#132731"/>
+            <circle cx="78" cy="212" r="5" fill="#132731"/>
+            <circle cx="344" cy="216" r="5" fill="#132731"/>
+          </g>
+          <g stroke="#3d6a72" stroke-width="1.6" stroke-dasharray="3 5">
+            <path d="M100 116l74 30"/><path d="M326 102l-75 30"/><path d="M83 210l70-28"/><path d="M340 212l-72-30"/>
+          </g>
+          <text x="210" y="292" text-anchor="middle" fill="#8fb3aa" font-size="13" font-family="system-ui,sans-serif">入口 · 校验 · 复核</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap layout">
+<main>
+
+  <section class="block" id="overview">
+    <h2><span class="idx">01</span>领域概览：隐私研究的四条主线</h2>
+    <p class="sec-sub">按研究对象划分，条目规模与公开资料可查性都在这里列出。</p>
+    <div class="overview">
+      <div class="ov-item"><b>匿名网络与流量层</b><p>Tor 目录服务、I2P 地址簿、Snowflake 网桥。条目 <span class="num">46</span> 条，公开文档完整度最高。</p></div>
+      <div class="ov-item"><b>端到端加密与密钥</b><p>OpenPGP、Signal 协议、Matrix 房间密钥轮换。条目 <span class="num">39</span> 条，版本差异需要单独核对。</p></div>
+      <div class="ov-item"><b>数据最小化与差分隐私</b><p>本地差分隐私 LDP、k-匿名、聚合上报。条目 <span class="num">51</span> 条，偏论文与规范文档。</p></div>
+      <div class="ov-item"><b>匿名通信与临时身份</b><p>一次性邮箱、别名转发、号码虚拟服务。条目 <span class="num">46</span> 条，失效频率最高。</p></div>
+    </div>
+    <p style="margin-top:.9rem;font-size:.87rem;color:var(--muted)">四类研究对象的更新节奏不同：流量层依赖协议版本发布，密钥类跟随客户端发版，数据最小化类集中在标准组织会议之后，临时身份类几乎每周都有服务停运。</p>
+  </section>
+
+  <section class="block" id="picks">
+    <h2><span class="idx">02</span>精选内容推荐：本周值得先读的 6 条</h2>
+    <p class="sec-sub">挑选标准是“有可复现步骤”，不含仅宣传概念的条目。</p>
+    <div class="pick-list">
+      <article class="pick">
+        <img src="https://picsum.photos/seed/priv-tor-bridge/560/300" width="560" height="300" loading="lazy" alt="Tor 网桥配置界面截图的示意画面" style="object-fit:cover">
+        <div class="body">
+          <h4>Tor 网桥与 Snowflake 可用性对照</h4>
+          <p>记录 10 月 12 日至 11 月 5 日三类网桥在移动网络下的握手成功率，附对照表。</p>
+          <div class="meta"><span>2026-11-05</span><span class="tag">网络层</span></div>
+        </div>
+      </article>
+      <article class="pick">
+        <img src="https://picsum.photos/seed/priv-pgp-key/560/300" width="560" height="300" loading="lazy" alt="OpenPGP 公钥指纹校验流程示意画面" style="object-fit:cover">
+        <div class="body">
+          <h4>OpenPGP 公钥指纹线下核对清单</h4>
+          <p>包含 6 个步骤与常见错误，重点讲清短密钥 ID 碰撞的历史教训。</p>
+          <div class="meta"><span>2026-11-03</span><span class="tag">密钥</span></div>
+        </div>
+      </article>
+      <article class="pick">
+        <img src="https://picsum.photos/seed/priv-ldp-report/560/300" width="560" height="300" loading="lazy" alt="本地差分隐私上报结构图解画面" style="object-fit:cover">
+        <div class="body">
+          <h4>本地差分隐私的 ε 取值与噪声幅度</h4>
+          <p>用同一份用户活跃度数据演示 ε=1 与 ε=4 的统计结果差异。</p>
+          <div class="meta"><span>2026-11-02</span><span class="tag">数据最小化</span></div>
+        </div>
+      </article>
+      <article class="pick">
+        <img src="https://picsum.photos/seed/priv-alias-mail/560/300" width="560" height="300" loading="lazy" alt="一次性邮箱别名转发路径示意画面" style="object-fit:cover">
+        <div class="body">
+          <h4>一次性邮箱别名的转发链路排查</h4>
+          <p>从 SPF、DKIM 到灰名单，列出 5 种转发失败原因与对应日志字段。</p>
+          <div class="meta"><span>2026-10-31</span><span class="tag">临时身份</span></div>
+        </div>
+      </article>
+      <article class="pick">
+        <img src="https://picsum.photos/seed/priv-signal-safety/560/300" width="560" height="300" loading="lazy" alt="加密通讯安全号码比对界面示意画面" style="object-fit:cover">
+        <div class="body">
+          <h4>Signal 安全号码变更的三种触发情形</h4>
+          <p>换机、重装、密钥轮换各自的表现不同，附客户端提示原文措辞。</p>
+          <div class="meta"><span>2026-10-29</span><span class="tag">密钥</span></div>
+        </div>
+      </article>
+      <article class="pick">
+        <img src="https://picsum.photos/seed/priv-k-anon/560/300" width="560" height="300" loading="lazy" alt="k-匿名数据表泛化处理示意画面" style="object-fit:cover">
+        <div class="body">
+          <h4>k-匿名在小样本表上的失效边界</h4>
+          <p>当准标识符组合超过 4 列时，k=5 仍可能被唯一识别，给出检验方法。</p>
+          <div class="meta"><span>2026-10-27</span><span class="tag">数据最小化</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="updates">
+    <h2><span class="idx">03</span>最新更新：近 14 天的条目变动</h2>
+    <p class="sec-sub">只记录已经确认的变动，推测性消息归入下方资讯栏。</p>
+    <ul class="updates">
+      <li><time datetime="2026-11-08">今天 09:20</time><span class="t"><b>匿名邮箱服务对比表</b>更新至第 7 版，新增 2 家支持自带域名的服务</span><span class="src">条目维护：邮件组</span></li>
+      <li><time datetime="2026-11-07">昨天 17:45</time><span class="t"><b>Tails 6.9</b> 的 ISO 校验值与签名指纹已重新核对</span><span class="src">来源：官方镜像公告</span></li>
+      <li><time datetime="2026-11-06">11-06</time><span class="t"><b>Snowflake 网桥</b>志愿者节点数从 1.1 万降至 9,400</span><span class="src">来源：网桥指标页面</span></li>
+      <li><time datetime="2026-11-04">11-04</time><span class="t">新增条目：<b>Matrix 房间密钥轮换策略</b>，含 3 个配置示例</span><span class="src">条目编号 M-72</span></li>
+      <li><time datetime="2026-11-02">11-02</time><span class="t"><b>I2P 0.9.63</b> 版本说明中的加密套件调整已归档</span><span class="src">来源：发布说明</span></li>
+      <li><time datetime="2026-10-30">10-30</time><span class="t">下架 4 条失效入口：2 家一次性号码服务、1 个镜像站、1 个旧版教程</span><span class="src">复核记录</span></li>
+      <li><time datetime="2026-10-28">10-28</time><span class="t"><b>差分隐私 ε 取值说明</b>新增 2 个反例，修正了原表格的噪声计算口径</span><span class="src">勘误第 3 号</span></li>
+    </ul>
+  </section>
+
+  <section class="block" id="cats">
+    <h2><span class="idx">04</span>分类入口：12 个主题频道</h2>
+    <p class="sec-sub">每个频道给出条目数与判断这类条目是否仍可用的第一检查点。</p>
+    <div class="cat-grid">
+      <a class="cat" href="/#picks"><b>Tor 入口与网桥</b><span>46 条 · 先查目录服务一致性</span></a>
+      <a class="cat" href="/#picks"><b>I2P 隐藏服务</b><span>21 条 · 先查地址簿签名</span></a>
+      <a class="cat" href="/#analysis"><b>端到端加密协议</b><span>39 条 · 先查协议版本号</span></a>
+      <a class="cat" href="/#guide"><b>PGP 密钥管理</b><span>28 条 · 先查指纹而非短 ID</span></a>
+      <a class="cat" href="/#picks"><b>一次性邮箱</b><span>17 条 · 先查 MX 与 SPF 记录</span></a>
+      <a class="cat" href="/#picks"><b>号码别名与虚拟号</b><span>14 条 · 先查所属国家号段</span></a>
+      <a class="cat" href="/#analysis"><b>本地差分隐私</b><span>33 条 · 先查 ε 与敏感度定义</span></a>
+      <a class="cat" href="/#analysis"><b>k-匿名与脱敏</b><span>18 条 · 先查准标识符列数</span></a>
+      <a class="cat" href="/#guide"><b>磁盘与全盘加密</b><span>25 条 · 先查密钥派生参数</span></a>
+      <a class="cat" href="/#guide"><b>匿名操作系统</b><span>12 条 · 先查镜像签名</span></a>
+      <a class="cat" href="/#news"><b>隐私合规与规范</b><span>31 条 · 先查生效日期</span></a>
+      <a class="cat" href="/#comments"><b>用户实测与踩坑</b><span>按条目整理 · 先查是否附日志</span></a>
+    </div>
+  </section>
+
+  <section class="block" id="analysis">
+    <h2><span class="idx">05</span>深度解析：入口清单的“可复核”到底指什么</h2>
+    <div class="analysis">
+      <p>把一条入口称为“可复核”，意味着任何人按页面给出的步骤，能在半小时内得到二选一的结论：仍可用，或已失效。<strong>做不到这一步的清单，本质上只是一份链接收藏。</strong></p>
+
+      <h3>一、判断拆成三层：签名、可达、行为</h3>
+      <p>以 Tails 6.9 为例，2026-10-22 的官方发布页给出了 ISO 的 SHA-256 与签名指纹。复核签名是最低门槛；可达性指镜像是否能下载完成；行为指安装后能否正常接入网络并完成一次 DNS 查询。三层都通过，才记为“已验证”。</p>
+      <div class="fact-box">
+        <table>
+          <thead><tr><th>层级</th><th>可核对动作</th><th>通过标准</th><th>常见失败原因</th></tr></thead>
+          <tbody>
+            <tr><td>签名</td><td>导入发布者公钥，验 .sig 与 .iso</td><td class="ok">签名有效且指纹与公告一致</td><td>沿用旧密钥，短 ID 匹配错误</td></tr>
+            <tr><td>可达</td><td>从 2 个不同网络下载完整文件</td><td class="ok">哈希一致，无截断</td><td>镜像同步延迟，中途断连</td></tr>
+            <tr><td>行为</td><td>启动后完成一次受控联网</td><td class="ok">DNS 与出口符合预期</td><td>网卡驱动、时间偏差</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>二、时效证据比描述文字更重要</h3>
+      <p>Snowflake 网桥的志愿者节点数在 2026-11-06 的指标页显示为 9,400，而 10-16 同一页面为 1.1 万。三周减少约 1,600 个节点，与此对应，晚间高峰的连接排队时间从 12 秒延长到 27 秒。两个月前写的“连接几乎瞬时”这类描述，放到 11 月已经失真。</p>
+      <div class="note">可被反驳的判断：节点数下降不一定等于可用性下降。若同期单节点并发提升，排队时间可能被抵消。9,400 与 1.1 万这两个数字本身不解释原因。</div>
+
+      <h3>三、同一服务不同说法，差异出在定义</h3>
+      <p>某一次性邮箱服务在官网首页写“邮件保留 24 小时”，在帮助中心写“收件箱在 2 小时后清理附件”。第三方评测在 10 月 19 日按首页描述测试，把附件视为可保留 24 小时，结论与官方帮助中心冲突。事实是两条规则并存：正文保留、附件清理。转述时把两者混成一句，就产生了错误。</p>
+      <ul>
+        <li><strong>事实</strong>：帮助中心条目编号 Help-417 写明附件 2 小时清理。</li>
+        <li><strong>回应</strong>：该服务在 10 月 21 日的状态页承认首页文案“容易误读”。</li>
+        <li><strong>转述</strong>：两家评测站随后更新，其中一家仍保留旧表述。</li>
+        <li><strong>推测</strong>：首页文案迟迟未改，可能与多语言版本排期有关，无公开证据。</li>
+      </ul>
+
+      <h3>四、可复核记录应包含时间与版本号</h3>
+      <p>一条合格的条目记录至少四栏：服务名、协议或客户端版本、复核日期、复核者给出的结论。缺版本号时，“能用”这个词在 30 天后几乎没有参考价值。以 Matrix 房间密钥轮换为例，客户端 1.19 与 1.18 的默认轮换周期不同，前者 7 天，后者 30 天，配置示例照抄会得到相反的结果。</p>
+      <p>由此可以给出一条便于检验的结论：<strong>入口清单的价值与其版本记录的密度成正比，与条目总数关系不大。</strong>把 182 条条目按版本号能否查明来分，能查明的 121 条在 7 天内复核成功率为 93%，无法查明的 61 条只有 58%。</p>
+    </div>
+  </section>
+
+  <section class="block" id="guide">
+    <h2><span class="idx">06</span>体验指南：从零开始核对一条入口</h2>
+    <p class="sec-sub">以下步骤针对匿名操作系统镜像，其他类型入口的检查点略有不同。</p>
+    <ol class="steps">
+      <li><b>确认发布者身份</b>在官方公告页找到签名指纹，与本地导入的公钥指纹逐位比对，不看短 ID。</li>
+      <li><b>记录版本与日期</b>把客户端版本号、镜像发布日期写进自己的笔记，后续排查时这是唯一锚点。</li>
+      <li><b>双网络下载校验</b>在两个不同出口各下载一次，比对哈希。单次下载成功不足以排除镜像污染。</li>
+      <li><b>受控联网</b>启动后只访问一个已知页面，观察 DNS 请求与出口地址是否符合预期。</li>
+      <li><b>回填复核结论</b>通过记为“已验证”，不通过注明失败环节。失败原因比结论更有复用价值。</li>
+    </ol>
+    <div class="compare">
+      <div>
+        <h4>只看描述的做法</h4>
+        <ul>
+          <li>相信“每日更新”标签</li>
+          <li>用搜索结果第一条镜像</li>
+          <li>不记版本号</li>
+          <li>出错后无法定位环节</li>
+        </ul>
+      </div>
+      <div>
+        <h4>三层核对的做法</h4>
+        <ul>
+          <li>查公告页的哈希与签名</li>
+          <li>双网络各下载一次</li>
+          <li>笔记含版本与日期</li>
+          <li>失败环节可直接复现</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <h2><span class="idx">07</span>常见问题</h2>
+    <details class="faq">
+      <summary>Tor 网桥和普通中继在入口校验上有什么区别？</summary>
+      <div class="ans">普通中继的地址公开在目录服务里，校验重点是目录一致性；网桥地址不公开，校验重点变成分发渠道是否可信，例如 Snowflake 通过浏览器扩展分发，需确认扩展来源与版本。两者都不能只看“能否连上”。</div>
+    </details>
+    <details class="faq">
+      <summary>PGP 公钥指纹和短密钥 ID 为什么不能混用？</summary>
+      <div class="ans">短 ID 只有 32 位，历史上出现过碰撞：2019 年两名开发者的短 ID 完全相同，导致部分密钥服务器返回错误公钥。完整指纹是 160 位 SHA-1 摘要，碰撞概率可忽略。线下核对时只报指纹后 8 位也属于折中做法，需同时核对姓名与邮箱。</div>
+    </details>
+    <details class="faq">
+      <summary>一次性邮箱保留多久，官网和帮助中心说法为何不同？</summary>
+      <div class="ans">正文邮件与附件的保留策略通常分开设置。以 10 月 19 日的测试为例，正文保留 24 小时，附件在 2 小时后清理，首页文案只写了前者。遇到冲突时以帮助中心的条目编号为准，并记录测试日期。</div>
+    </details>
+    <details class="faq">
+      <summary>差分隐私里 ε 越小越安全吗？</summary>
+      <div class="ans">ε 越小噪声越大、隐私保护越强，但统计结果可用性下降。ε=1 与 ε=4 在同一份活跃度数据上，前者日活估计偏差可到 18%，后者约 5%。选择取决于用途，脱离敏感度定义单独谈 ε 没有意义。</div>
+    </details>
+    <details class="faq">
+      <summary>k-匿名在小样本表上为什么仍会泄露个体？</summary>
+      <div class="ans">k 值只约束准标识符组合的出现次数。当组合列数增加，满足 k=5 的记录仍可能因外部数据集交叉比对被唯一识别。检验方法是拿外部已知表做连接测试，看能唯一命中的比例。</div>
+    </details>
+    <details class="faq">
+      <summary>匿名操作系统的镜像签名验证失败，最可能的原因是什么？</summary>
+      <div class="ans">按 10 月的复核记录，失败原因依次是：沿用了上一版本的发布密钥、下载被截断、镜像站同步延迟。三者可通过对比公告页哈希、重新下载、换镜像排除。签名失败时不要用“校验和看起来对”作为放行理由。</div>
+    </details>
+  </section>
+
+  <section class="block" id="comments">
+    <h2><span class="idx">08</span>用户评论：来自条目实测的反馈</h2>
+    <p class="sec-sub">保留原文语气，仅做长度裁剪。指向具体条目的评论标注了条目名。</p>
+    <div class="cmts">
+      <div class="cmt">
+        <div class="who"><b>窄带用户</b><span>2026-11-07</span></div>
+        <p>按 Tails 6.9 那篇的步骤走了一遍，签名验证一次过，但第二个镜像站下载到 87% 断了两次，换了镜像才完成。建议把那两个镜像标成“同步延迟”。<span class="ref">Tails 6.9</span></p>
+      </div>
+      <div class="cmt">
+        <div class="who"><b>海边的路由器</b><span>2026-11-06</span></div>
+        <p>Snowflake 晚上排队 27 秒这个数和我这边接近，白天基本秒连。只看一个时间点会误判，最好标出测试时段。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><b>阿岚</b><span>2026-11-05</span></div>
+        <p>一次性邮箱那条对比表挺实用，但“保留 24 小时”和帮助中心不一致的问题，我 10 月 20 日也踩到了，附件确实两小时就没了。<span class="ref">匿名邮箱对比表</span></p>
+      </div>
+      <div class="cmt">
+        <div class="who"><b>指纹控</b><span>2026-11-04</span></div>
+        <p>PGP 那篇讲短 ID 碰撞讲得清楚，不过我不同意“线下核对必须核对邮箱”的说法，有些场景邮箱本身是别名，核对姓名和指纹就够。<span class="ref">OpenPGP 公钥核对清单</span></p>
+      </div>
+      <div class="cmt">
+        <div class="who"><b>数据民工</b><span>2026-11-02</span></div>
+        <p>ε=1 偏差 18% 这个结论，取决于数据集规模和分桶方式，我们的表重跑只有 11%。建议把数据集特征一起写出来。</p>
+      </div>
+      <div class="cmt">
+        <div class="who"><b>扫雪人</b><span>2026-10-31</span></div>
+        <p>k-匿名那篇标题用“失效边界”其实有点夸大，小样本下问题不是失效，是外部数据交叉后 k 的保护不成立。<span class="ref">k-匿名边界</span></p>
+      </div>
+      <div class="cmt">
+        <div class="who"><b>桥下等风</b><span>2026-10-29</span></div>
+        <p>I2P 0.9.63 的加密套件调整，发布说明写得含糊，归档里那两张对照表比官方清楚。<span class="ref">I2P 0.9.63</span></p>
+      </div>
+      <div class="cmt">
+        <div class="who"><b>Ctrl_Z</b><span>2026-10-28</span></div>
+        <p>差分隐私勘误第 3 号改得对，之前那张表把敏感度当常数，重算后噪声幅度差了一倍。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="news">
+    <h2><span class="idx">09</span>相关资讯</h2>
+    <p class="sec-sub">区分已确认消息与仍在流转的说法，后者标注来源性质。</p>
+    <ul class="news">
+      <li>
+        <a href="/#updates">Snowflake 志愿者节点数三日下降约 600 个</a>
+        <p>网桥指标页 11-03 至 11-06 的公开数据。官方论坛同日有志愿者提到带宽成本上涨，属于个人陈述，尚未见组织层面回应。</p>
+      </li>
+      <li>
+        <a href="/#updates">Tails 6.9 发布，默认 DNS 配置改动</a>
+        <p>发布说明列出 14 项变更，其中 DNS 解析路径变化影响部分双网卡环境。镜像已在 10-22 同步。</p>
+      </li>
+      <li>
+        <a href="/#analysis">某一次性邮箱服务更新首页文案</a>
+        <p>10-21 状态页承认“保留 24 小时”表述易误读，截至 11-08 英文首页已加注附录，中文页未见同步。转述类消息需自行核对版本。</p>
+      </li>
+      <li>
+        <a href="/#cats">Matrix 客户端 1.19 默认密钥轮换周期改为 7 天</a>
+        <p>变更日志 10-24 条目。1.18 的 30 天默认值在文档里仍可见，照旧配置会产生安全预期偏差。</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="block" id="reco">
+    <h2><span class="idx">10</span>相关推荐</h2>
+    <p class="sec-sub">按核对成本排序，先读低门槛的条目。</p>
+    <div class="reco">
+      <a href="/#guide">匿名操作系统镜像签名验证</a>
+      <a href="/#picks">Tor 网桥可用性对照表</a>
+      <a href="/#guide">PGP 公钥指纹线下核对</a>
+      <a href="/#analysis">本地差分隐私 ε 取值</a>
+      <a href="/#picks">一次性邮箱别名转发排查</a>
+      <a href="/#analysis">k-匿名小样本检验方法</a>
+      <a href="/#updates">I2P 0.9.63 加密套件归档</a>
+      <a href="/#guide">全盘加密密钥派生参数</a>
+    </div>
+  </section>
+
+  <section class="block" id="board">
+    <h2><span class="idx">11</span>本周复核榜单与时间线</h2>
+    <div class="grid g2">
+      <div>
+        <h3>按复核通过率排序（近 7 日）</h3>
+        <ol class="rank">
+          <li><span>匿名操作系统镜像</span><span class="bar">12/12</span></li>
+          <li><span>端到端加密协议</span><span class="bar">9/10</span></li>
+          <li><span>PGP 密钥管理</span><span class="bar">8/9</span></li>
+          <li><span>Tor 与网桥</span><span class="bar">7/9</span></li>
+          <li><span>一次性邮箱</span><span class="bar">5/8</span></li>
+          <li><span>号码别名服务</span><span class="bar">3/7</span></li>
+        </ol>
+      </div>
+      <div>
+        <h3>一次核对的时间线</h3>
+        <ol class="timeline">
+          <li><time>10-22</time><b>Tails 6.9 发布</b>，镜像开始同步，首批镜像 6 小时后可得。</li>
+          <li><time>10-25</time>第一个镜像完成双网络下载校验，哈希一致。</li>
+          <li><time>11-07</time>签名验证与镜像复查，确认沿用同一发布密钥。</li>
+          <li><time>11-08</time>记录归档，条目状态从“待复核”转为“已验证”。</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<aside class="side" aria-label="侧栏">
+  <div class="side-card">
+    <h3>频道导航</h3>
+    <nav class="side-nav" id="sideNav" aria-label="页面内栏目导航">
+      <a href="/#overview">领域概览</a>
+      <a href="/#picks">精选内容推荐</a>
+      <a href="/#updates">最新更新</a>
+      <a href="/#cats">分类入口</a>
+      <a href="/#analysis">深度解析</a>
+      <a href="/#guide">体验指南</a>
+      <a href="/#faq">常见问题</a>
+      <a href="/#comments">用户评论</a>
+      <a href="/#news">相关资讯</a>
+      <a href="/#reco">相关推荐</a>
+      <a href="/#board">复核榜单</a>
+    </nav>
+  </div>
+  <div class="side-card">
+    <h3>热门长尾词</h3>
+    <div class="side-tags">
+      <a href="/#guide">Tor 网桥配置步骤</a>
+      <a href="/#guide">PGP 公钥校验方法</a>
+      <a href="/#analysis">差分隐私 ε 怎么选</a>
+      <a href="/#analysis">k-匿名脱敏边界</a>
+      <a href="/#picks">一次性邮箱转发失败</a>
+      <a href="/#guide">Tails 镜像签名验证</a>
+      <a href="/#updates">Snowflake 节点数</a>
+    </div>
+  </div>
+  <div class="side-card">
+    <h3>复核说明</h3>
+    <p style="font-size:.84rem;color:var(--ink-soft)">近 7 日复核 42 条，通过 36 条，下架 4 条，待复核 2 条。每条记录含版本号与复核日期，失败环节单独注明。</p>
+    <p class="meta" style="margin-top:.5rem">数据基准日 2026-11-08</p>
+  </div>
+</aside>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#24505c"/><path d="M32 14l14 7v12c0 9-6 15-14 18-8-3-14-9-14-18V21z" fill="none" stroke="#7fd4c1" stroke-width="3"/><circle cx="32" cy="31" r="4" fill="#7fd4c1"/><path d="M32 35v7" stroke="#7fd4c1" stroke-width="3" stroke-linecap="round"/></svg>
+          <span>私密研究所入口</span>
+        </div>
+        <p>为需要核对入口真伪的读者整理可复现步骤，条目随版本号与复核日期一起维护。</p>
+      </div>
+      <div>
+        <h4>研究条目</h4>
+        <ul>
+          <li><a href="/#picks">Tor 网桥与 Snowflake</a></li>
+          <li><a href="/#guide">PGP 公钥与指纹</a></li>
+          <li><a href="/#analysis">本地差分隐私</a></li>
+          <li><a href="/#analysis">k-匿名与脱敏</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>使用入口</h4>
+        <ul>
+          <li><a href="/#guide">入口校验五步法</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#comments">用户实测反馈</a></li>
+          <li><a href="/#board">本周复核榜单</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>说明</h4>
+        <ul>
+          <li><a href="/#updates">更新记录</a></li>
+          <li><a href="/#news">相关资讯来源</a></li>
+          <li><a href="/#overview">领域划分口径</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>页面内容为示例条目与公开资料整理；标注日期以 2026-11-08 为基准。页脚更新时间对应本节“更新记录”中的可核对变动项。</span>
+      <span>© 2026 私密研究所入口 · 内容按条目组织</span>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" type="button" aria-label="回到页面顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V6M6 12l6-6 6 6"/></svg>
+</button>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"私密研究所入口",
+  "description":"隐私计算、匿名网络与数据防护的研究资源索引，含入口清单、工具对比与实操指南。",
+  "inLanguage":"zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Tor 网桥和普通中继在入口校验上有什么区别？","acceptedAnswer":{"@type":"Answer","text":"普通中继的地址公开在目录服务里，校验重点是目录一致性；网桥地址不公开，校验重点变成分发渠道是否可信，例如 Snowflake 通过浏览器扩展分发，需确认扩展来源与版本。"}},
+    {"@type":"Question","name":"PGP 公钥指纹和短密钥 ID 为什么不能混用？","acceptedAnswer":{"@type":"Answer","text":"短 ID 只有 32 位，历史上出现过碰撞，2019 年两名开发者的短 ID 完全相同，导致部分密钥服务器返回错误公钥。完整指纹是 160 位 SHA-1 摘要，碰撞概率可忽略。"}},
+    {"@type":"Question","name":"一次性邮箱保留多久，官网和帮助中心说法为何不同？","acceptedAnswer":{"@type":"Answer","text":"正文邮件与附件的保留策略通常分开设置。以 10 月 19 日的测试为例，正文保留 24 小时，附件在 2 小时后清理，首页文案只写了前者。遇到冲突时以帮助中心的条目编号为准。"}},
+    {"@type":"Question","name":"差分隐私里 ε 越小越安全吗？","acceptedAnswer":{"@type":"Answer","text":"ε 越小噪声越大、隐私保护越强，但统计结果可用性下降。ε=1 与 ε=4 在同一份活跃度数据上，前者日活估计偏差可到 18%，后者约 5%。选择取决于用途。"}},
+    {"@type":"Question","name":"k-匿名在小样本表上为什么仍会泄露个体？","acceptedAnswer":{"@type":"Answer","text":"k 值只约束准标识符组合的出现次数。当组合列数增加，满足 k=5 的记录仍可能因外部数据集交叉比对被唯一识别。检验方法是拿外部已知表做连接测试。"}},
+    {"@type":"Question","name":"匿名操作系统的镜像签名验证失败，最可能的原因是什么？","acceptedAnswer":{"@type":"Answer","text":"按 10 月的复核记录，失败原因依次是沿用了上一版本的发布密钥、下载被截断、镜像站同步延迟。三者可通过对比公告页哈希、重新下载、换镜像排除。"}}
+  ]
+}
+</script>
+
+<script>
+(function(){
+  var searchToggle=document.getElementById('searchToggle');
+  var searchPanel=document.getElementById('searchPanel');
+  var searchForm=document.getElementById('searchForm');
+  var input=document.getElementById('q');
+  var result=document.getElementById('searchResult');
+  var menuBtn=document.getElementById('menuBtn');
+  var mainNav=document.getElementById('mainNav');
+  var toTop=document.getElementById('toTop');
+  var sideLinks=Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var sections=sideLinks.map(function(a){return document.querySelector(a.getAttribute('href').replace('/#','#'));});
+
+  searchToggle.addEventListener('click',function(){
+    var open=searchPanel.classList.toggle('open');
+    searchToggle.setAttribute('aria-expanded',open?'true':'false');
+    if(open){input.focus();}
+  });
+
+  menuBtn.addEventListener('click',function(){
+    var open=mainNav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded',open?'true':'false');
+    menuBtn.setAttribute('aria-label',open?'关闭导航菜单':'打开导航菜单');
+  });
+  mainNav.addEventListener('click',function(e){
+    if(e.target.tagName==='A' && mainNav.classList.contains('open')){
+      mainNav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+      menuBtn.setAttribute('aria-label','打开导航菜单');
+    }
+  });
+
+  var index=[];
+  document.querySelectorAll('main h2, main h3, main h4, main .reco a, main .side-tags a').forEach(function(el){
+    var txt=(el.textContent||'').replace(/\s+/g,' ').trim();
+    if(txt.length>1){index.push({text:txt,el:el});}
+  });
+
+  function runSearch(q){
+    q=q.trim();
+    if(!q){result.innerHTML='';return;}
+    var hits=index.filter(function(it){return it.text.indexOf(q)>-1;}).slice(0,8);
+    if(!hits.length){
+      result.innerHTML='<span class="search-empty">没有匹配“'+q.replace(/[<>&]/g,'')+'”的条目。可换个说法，例如“网桥”“公钥”“ε”。</span>';
+      return;
+    }
+    var html='<span>找到 '+hits.length+' 条相关内容：</span><ul>';
+    hits.forEach(function(it){
+      html+='<li>'+it.text.replace(/[<>&]/g,'')+'</li>';
+    });
+    html+='</ul>';
+    result.innerHTML=html;
+  }
+
+  searchForm.addEventListener('submit',function(e){
+    e.preventDefault();
+    runSearch(input.value);
+  });
+  input.addEventListener('input',function(){runSearch(input.value);});
+
+  var ticking=false;
+  function onScroll(){
+    if(ticking)return;
+    ticking=true;
+    window.requestAnimationFrame(function(){
+      var y=window.scrollY||window.pageYOffset;
+      toTop.classList.toggle('show',y>600);
+      var offset=y+120;
+      var current=-1;
+      sections.forEach(function(sec,i){
+        if(sec && sec.offsetTop<=offset){current=i;}
+      });
+      sideLinks.forEach(function(a,i){a.classList.toggle('active',i===current);});
+      ticking=false;
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  toTop.addEventListener('click',function(){
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+  });
+})();
+</script>
+</body>
+  </html>
